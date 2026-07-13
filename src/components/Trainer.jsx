@@ -8,7 +8,7 @@ function Trainer({ name, age, specialty }) {
             <p>Name: {name}</p>
             {/* use {} to insert code */}
             <p>Age: {age}</p>
-            <p>Specialty: {specialty}</p>
+            {specialty && <p>Specialty: {specialty}</p>}
         </div>
     )
 }

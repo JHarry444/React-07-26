@@ -1,4 +1,5 @@
 import './App.css'
+import ConditionalRendering from './components/ConditionalRendering'
 import Input from './components/Input'
 import Trainer from './components/Trainer'
 
@@ -10,11 +11,17 @@ function App() {
       <div>
         <h2>Components</h2>
         <Trainer name="JH" age={32} specialty="Java" />
-        {Trainer({ name: "JH", age: 32, specialty: "Java" })}
+        {Trainer({ name: "JH", age: 32 })}
         <Trainer age={33} name="CG" specialty="Web" />
         <input />
         <Input />
 
+      </div>
+
+      <div>
+        <h2>Conditional Rendering</h2>
+        <ConditionalRendering bool />
+        <ConditionalRendering />
       </div>
     </>
   )
