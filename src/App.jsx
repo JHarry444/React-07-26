@@ -9,9 +9,9 @@ function App() {
       <h1>Intro to React</h1>
       <div>
         <h2>Components</h2>
-        <Trainer />
-        {Trainer()}
-        <Trainer />
+        <Trainer name="JH" age={32} specialty="Java" />
+        {Trainer({ name: "JH", age: 32, specialty: "Java" })}
+        <Trainer age={33} name="CG" specialty="Web" />
         <input />
         <Input />
 
