@@ -1,14 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import Input from './components/Input'
+import Trainer from './components/Trainer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  /* <> is a react fragment, cuts down on the need for extra divs */
   return (
-    <h1>Hello, World!</h1>
+    <>
+      <h1>Intro to React</h1>
+      <div>
+        <h2>Components</h2>
+        <Trainer />
+        {Trainer()}
+        <Trainer />
+        <input />
+        <Input />
+
+      </div>
+    </>
   )
 }
 
