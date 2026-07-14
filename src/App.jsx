@@ -2,6 +2,7 @@ import './App.css'
 import NavBar from './components/NavBar'
 import ComponentsPage from './components/pages/ComponentsPage'
 import ConditionalRenderingPage from './components/pages/ConditionalRenderingPage'
+import EventHandlingPage from './components/pages/EventHandlingPage'
 import ExternalDataPage from './components/pages/ExternalDataPage'
 import { BrowserRouter as Router, Routes, Route } from "react-router"
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/components" element={<ComponentsPage />} />
         <Route path="/conditional" element={<ConditionalRenderingPage />} />
         <Route path="/external" element={<ExternalDataPage />} />
+        <Route path="/events" element={<EventHandlingPage />} />
       </Routes>
       <footer>
         <p>Copyright 2026</p>
