@@ -5,6 +5,7 @@ import ConditionalRenderingPage from './components/pages/ConditionalRenderingPag
 import EventHandlingPage from './components/pages/EventHandlingPage'
 import ExternalDataPage from './components/pages/ExternalDataPage'
 import { BrowserRouter as Router, Routes, Route } from "react-router"
+import StatePage from './components/pages/StatePage'
 
 function App() {
   /* <> is a react fragment, cuts down on the need for extra divs */
@@ -19,6 +20,7 @@ function App() {
         <Route path="/conditional" element={<ConditionalRenderingPage />} />
         <Route path="/external" element={<ExternalDataPage />} />
         <Route path="/events" element={<EventHandlingPage />} />
+        <Route path="/state" element={<StatePage />} />
       </Routes>
       <footer>
         <p>Copyright 2026</p>

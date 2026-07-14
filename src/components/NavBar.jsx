@@ -8,6 +8,7 @@ function NavBar() {
             <Link to="/conditional">Conditional Rendering</Link>
             <Link to="/external">External Data</Link>
             <Link to="/events">Event Handling</Link>
+            <Link to="/state">State</Link>
         </nav>
     );
 }
