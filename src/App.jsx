@@ -6,6 +6,7 @@ import EventHandlingPage from './components/pages/EventHandlingPage'
 import ExternalDataPage from './components/pages/ExternalDataPage'
 import { BrowserRouter as Router, Routes, Route } from "react-router"
 import StatePage from './components/pages/StatePage'
+import LiftingStatePage from './components/pages/LiftingStatePage'
 
 function App() {
   /* <> is a react fragment, cuts down on the need for extra divs */
@@ -21,6 +22,7 @@ function App() {
         <Route path="/external" element={<ExternalDataPage />} />
         <Route path="/events" element={<EventHandlingPage />} />
         <Route path="/state" element={<StatePage />} />
+        <Route path="/lifting" element={<LiftingStatePage />} />
       </Routes>
       <footer>
         <p>Copyright 2026</p>
