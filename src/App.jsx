@@ -1,35 +1,27 @@
 import './App.css'
-import ConditionalRendering from './components/ConditionalRendering'
-import ExternalData from './components/ExternalData'
-import Input from './components/Input'
-import Trainer from './components/Trainer'
+import NavBar from './components/NavBar'
+import ComponentsPage from './components/pages/ComponentsPage'
+import ConditionalRenderingPage from './components/pages/ConditionalRenderingPage'
+import ExternalDataPage from './components/pages/ExternalDataPage'
+import { BrowserRouter as Router, Routes, Route } from "react-router"
 
 function App() {
   /* <> is a react fragment, cuts down on the need for extra divs */
+
+
   return (
-    <>
-      <h1>Intro to React</h1>
-      <section>
-        <h2>Components</h2>
-        <Trainer name="JH" age={32} specialty="Java" />
-        {Trainer({ name: "JH", age: 32 })}
-        <Trainer age={33} name="CG" specialty="Web" />
-        <input />
-        <Input />
-
-      </section>
-
-      <section>
-        <h2>Conditional Rendering</h2>
-        <ConditionalRendering bool />
-        <ConditionalRendering />
-      </section>
-
-      <section>
-        <h2>External Data</h2>
-        <ExternalData />
-      </section>
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<h1>Intro to React</h1>} />
+        <Route path="/components" element={<ComponentsPage />} />
+        <Route path="/conditional" element={<ConditionalRenderingPage />} />
+        <Route path="/external" element={<ExternalDataPage />} />
+      </Routes>
+      <footer>
+        <p>Copyright 2026</p>
+      </footer>
+    </Router>
   )
 }
 
