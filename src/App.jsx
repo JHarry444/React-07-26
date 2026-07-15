@@ -11,7 +11,6 @@ import LiftingStatePage from './components/pages/LiftingStatePage'
 function App() {
   /* <> is a react fragment, cuts down on the need for extra divs */
 
-
   return (
     <Router>
       <NavBar />

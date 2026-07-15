@@ -1,6 +1,10 @@
 import { Link } from "react-router";
+import { useContext } from "react";
+import { ThemeContext } from "../context";
 
 function NavBar() {
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
     return (
         <nav>
             <Link to="/">Home</Link>
@@ -10,6 +14,7 @@ function NavBar() {
             <Link to="/events">Event Handling</Link>
             <Link to="/state">State</Link>
             <Link to="/lifting">Lifting State</Link>
+            <button onClick={toggleTheme} className={theme}>{theme === "light" ? "Dark Mode" : "Light Mode"}</button>
         </nav>
     );
 }
