@@ -30,16 +30,31 @@ function TrainerForm({ setTrainers }) {
         specialty: ""
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // prev is the previous state of trainers, we spread it into a new array and add the new data to it
-        setTrainers(prev => [...prev, data]);
-        setData({
-            name: "",
-            age: 0,
-            specialty: ""
-        });
-        nameRef.current.focus();
+        try {
+            const res = await fetch("http://localhost:8080/trainers", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+            if (res.status === 201) {
+                setTrainers(prev => [...prev, data]);
+                setData({
+                    name: "",
+                    age: 0,
+                    specialty: ""
+                });
+                nameRef.current.focus();
+            } else {
+                throw new Error("Failed to add trainer");
+            }
+        } catch (error) {
+            console.error("Error adding trainer:", error);
+        }
     }
 
     const nameRef = useRef(null);
