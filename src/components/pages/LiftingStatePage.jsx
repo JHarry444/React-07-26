@@ -2,24 +2,27 @@ import { useEffect, useState } from "react";
 import ListTrainers from "../ListTrainers";
 import TrainerForm from "../TrainerForm";
 import './lifting.css';
+import { useDispatch, useSelector } from "react-redux";
+import { setTrainers } from "../../redux/trainers";
 
 
 function LiftingStatePage() {
-    const [trainers, setTrainers] = useState([]);
     const [filter, setFilter] = useState("");
 
-    // componentDidMount equivalent
+    const trainers = useSelector(state => state.trainers);
+    const dispatch = useDispatch();
 
     const fetchTrainers = async () => {
         try {
             const res = await fetch("http://localhost:8080/trainers")
             const data = await res.json();
-            setTrainers(data);
+            dispatch(setTrainers(data));
         } catch (error) {
             console.error("Error fetching trainers:", error);
         }
     }
 
+    // componentDidMount equivalent
     useEffect(() => {
         const trainerInterval = setInterval(fetchTrainers, 5_000);
 
@@ -48,7 +51,7 @@ function LiftingStatePage() {
                     />
                 </div>
                 <div>
-                    <TrainerForm setTrainers={setTrainers} />
+                    <TrainerForm />
                 </div>
             </section>
 

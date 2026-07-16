@@ -2,14 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import ThemeProvider from './components/context/ThemeProvider.jsx'
+import { Provider } from 'react-redux'
+import myStore from './redux/store.js'
 
 // strict mode renders everything twice but only during development
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider>
+    <Provider store={myStore}>
       <App />
-    </ThemeProvider>
+    </Provider>
   </StrictMode>,
 )
