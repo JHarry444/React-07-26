@@ -26,32 +26,32 @@ import { addTrainer } from "../redux/trainers";
 
 function TrainerForm() {
     // name, age and specialty are all 'controlled components', meaning their values are controlled by react state
-    let [data, setData] = useState({
-        name: "",
-        age: 0,
-        specialty: ""
-    });
+    // let [data, setData] = useState({
+    //     name: "",
+    //     age: 0,
+    //     specialty: ""
+    // });
 
     const dispatch = useDispatch();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const formAction = async (formData) => {
         // prev is the previous state of trainers, we spread it into a new array and add the new data to it
+
+        const newTrainer = {
+            name: formData.get("name"),
+            age: Number(formData.get("age")),
+            specialty: formData.get("specialty")
+        }
         try {
             const res = await fetch("http://localhost:8080/trainers", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(newTrainer)
             });
             if (res.status === 201) {
-                dispatch(addTrainer(data));
-                setData({
-                    name: "",
-                    age: 0,
-                    specialty: ""
-                });
+                dispatch(addTrainer(newTrainer));
                 nameRef.current.focus();
             } else {
                 throw new Error("Failed to add trainer");
@@ -68,16 +68,13 @@ function TrainerForm() {
     return (
         <>
             <h2>Trainer Form</h2>
-            <form onSubmit={handleSubmit}>
+            <form action={formAction}>
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" id="name" value={data.name}
-                    onChange={(e) => setData({ ...data, name: e.target.value })} required minLength={2} ref={nameRef} />
+                <input type="text" name="name" id="name" required minLength={2} ref={nameRef} />
                 <label htmlFor="age">Age</label>
-                <input type="number" name="age" id="age" value={data.age}
-                    onChange={(e) => setData({ ...data, age: Number(e.target.value) })} required min={18} />
+                <input type="number" name="age" id="age" required min={18} />
                 <label htmlFor="specialty">Specialty</label>
-                <input type="text" name="specialty" id="specialty" value={data.specialty}
-                    onChange={(e) => setData({ ...data, specialty: e.target.value })} required minLength={2} />
+                <input type="text" name="specialty" id="specialty" required minLength={2} />
                 <button type="submit">Submit</button>
             </form>
         </>
